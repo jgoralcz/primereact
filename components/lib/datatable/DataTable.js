@@ -852,7 +852,7 @@ export const DataTable = React.forwardRef((inProps, ref) => {
         columnField.current = sortField;
 
         if (props.sortMode === 'multiple') {
-            let metaKey = event.metaKey || event.ctrlKey;
+            let metaKey = event.metaKey || event.ctrlKey || props.multiSortKey;
 
             multiSortMeta = [...getMultiSortMeta()];
 
@@ -863,7 +863,7 @@ export const DataTable = React.forwardRef((inProps, ref) => {
             const newMetaData = { field: sortField, order: sortOrder };
 
             if (sortOrder) {
-                multiSortMeta = metaKey ? multiSortMeta : multiSortMeta.filter((meta) => sortableDisabledFields.some((field) => field === meta.field));
+                multiSortMeta = metaKey != null ? multiSortMeta : multiSortMeta.filter((meta) => sortableDisabledFields.some((field) => field === meta.field));
 
                 addSortMeta(newMetaData, multiSortMeta);
             } else if (props.removableSort) {
