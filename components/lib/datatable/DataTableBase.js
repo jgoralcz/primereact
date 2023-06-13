@@ -143,6 +143,7 @@ export const DataTableBase = ComponentBase.extend({
         totalRecords: null,
         value: null,
         virtualScrollerOptions: null,
-        children: undefined
+        children: undefined,
+        multiSortKey: undefined,
     }
 });
